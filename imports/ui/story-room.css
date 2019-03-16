@@ -1,0 +1,7 @@
+.story-board {
+    height: 600px;
+    overflow: auto;
+    border-style: solid;
+    border-color: coral;
+    border-width: 3px;
+}
