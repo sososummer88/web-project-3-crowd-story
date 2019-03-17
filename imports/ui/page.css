@@ -1,0 +1,19 @@
+.story-board {
+    height: 600px;
+    overflow-y: auto;
+    border-style: solid;
+    border-color: coral;
+    border-width: 3px;
+}
+
+.chat-board {
+    height: 600px;
+    overflow-y: auto;
+    border-style: solid;
+    border-color: coral;
+    border-width: 3px;
+}
+
+.story-content {
+    display: inline-block;
+}

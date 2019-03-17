@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
-import { Stories } from "../api/stories";
+import { StoryContent } from "../api/story-content";
 import PropTypes from "prop-types";
 import { InputGroup, Col, Form, Button } from "react-bootstrap";
 
-import "./story-room.css";
+import "./page.css";
 
 class StoryBoard extends Component {
 	constructor(props) {
@@ -18,7 +18,7 @@ class StoryBoard extends Component {
 	renderStoryContent() {
 		return this.props.story.map((value) => {
 			return (
-				<span key={value._id}>{value.content}</span>
+				<span className={"story-content m-1"} key={value._id}>{value.content}</span>
 			);
 		});
 	}
@@ -31,7 +31,7 @@ class StoryBoard extends Component {
 
 	handleKeyPress(event) {
 		if (event.key === "Enter") {
-			Meteor.call("storyBoard.insert", this.state.content, this.props.storyId, (error, result) => {
+			Meteor.call("storyContent.insert", this.state.content, this.props.storyId, (error, result) => {
 				if (error !== undefined && error !== null) {
 					// show some tips
 				} else {
@@ -47,7 +47,7 @@ class StoryBoard extends Component {
 		return (
 			<Col lg={"9"}>
 				<div className={"story-board"}>
-					{this.renderStoryContent()}
+					<p>{this.renderStoryContent()}</p>
 				</div>
 				<InputGroup className="my-3">
 					<Form.Label>What happens next: </Form.Label>
@@ -73,8 +73,8 @@ StoryBoard.propTypes = {
 };
 
 export default withTracker((props) => {
-	Meteor.subscribe("stories",props.storyId);
+	Meteor.subscribe("storyContent", props.storyId);
 	return {
-		story: Stories.find({}).fetch(),
+		story: StoryContent.find({}).fetch(),
 	};
 })(StoryBoard);
