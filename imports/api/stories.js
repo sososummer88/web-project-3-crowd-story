@@ -5,9 +5,9 @@ import { check } from "meteor/check";
 export const Stories = new Mongo.Collection("stories");
 
 if (Meteor.isServer) {
-	Meteor.publish("stories", function getStory(storyId) {
-		Stories.find(
-			{storyId: storyId},
+	Meteor.publish("stories", function getStory() {
+		return Stories.find(
+			{},
 			{sort: {time: 1}});
 	});
 }

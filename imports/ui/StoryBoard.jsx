@@ -73,7 +73,7 @@ StoryBoard.propTypes = {
 };
 
 export default withTracker((props) => {
-	Meteor.subscribe("stories", props);
+	Meteor.subscribe("stories",props.storyId);
 	return {
 		story: Stories.find({}).fetch(),
 	};
