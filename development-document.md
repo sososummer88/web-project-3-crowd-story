@@ -49,6 +49,7 @@
 | time | date | 创建时间 |
 
 表名：vote_info
+
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
 | _id | ObjectId | MongoDB生成的id |
