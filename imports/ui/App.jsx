@@ -20,8 +20,6 @@ const App = () => (
 		<h2>Welcome to Crowd Story!</h2>
 		<h3>Please Sign in First!</h3>
 		<AccountLogin/>
-
-
 	</div>
 
 );
