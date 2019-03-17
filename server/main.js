@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import "../imports/api/stories";
+import "../imports/api/vote_info";
 
 Meteor.startup(() => {
 	ServiceConfiguration.configurations.remove({
