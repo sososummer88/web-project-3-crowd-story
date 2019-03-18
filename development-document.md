@@ -69,3 +69,12 @@ users这张表由Meteor生成和维护。这里的表结构信息只是截取了
 | username | string | 发送这条消息的用户的用户名，与users表中的username字段对应 |
 | message | string | 消息内容 |
 | time | date | 消息创建时间 |
+
+表名：corpus
+说明：start_sentence和end_sentence的语料来源
+
+| 字段名 | 类型 | 说明 |
+|-------|-----|------|
+| _id | ObjectId | MongoDB生成的id |
+| content | string | 语料内容 |
+| time | date | 语料创建时间 |

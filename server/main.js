@@ -2,6 +2,8 @@ import { Meteor } from "meteor/meteor";
 import "../imports/api/vote_info";
 import "../imports/api/story-content";
 import "../imports/api/chat-info";
+import "../imports/api/story";
+import "../imports/api/corpus";
 
 Meteor.startup(() => {
 	ServiceConfiguration.configurations.remove({
@@ -10,8 +12,8 @@ Meteor.startup(() => {
 
 	ServiceConfiguration.configurations.insert({
 		service: "facebook",
-		appId: '718545585214421',
-		secret: 'd91607cb955f3fbfd01277fe396d0ddf'
+		appId: "718545585214421",
+		secret: "d91607cb955f3fbfd01277fe396d0ddf"
 	});
 
 	ServiceConfiguration.configurations.remove({
