@@ -2,7 +2,7 @@ import { Meteor } from "meteor/meteor";
 import {Mongo} from "meteor/mongo";
 import {check} from "meteor/check";
 import {Corpus} from "./corpus";
-import {Story} from "./story";
+import {StoryMeta} from "./story-meta";
 
 export const Vote = new Mongo.Collection("vote_info");
 
