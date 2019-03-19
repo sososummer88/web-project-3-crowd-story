@@ -3,7 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 import { StoryContent } from "../api/story-content";
 import PropTypes from "prop-types";
-import { InputGroup, Col, Form, Button } from "react-bootstrap";
+import { InputGroup, Col, Form, Button, Alert } from "react-bootstrap";
 
 import "./page.css";
 
@@ -31,23 +31,33 @@ class StoryBoard extends Component {
 
 	handleKeyPress(event) {
 		if (event.key === "Enter") {
-			Meteor.call("storyContent.insert", this.state.content, this.props.storyId, (error, result) => {
-				if (error !== undefined && error !== null) {
-					// show some tips
-				} else {
-					this.setState({
-						content: "",
-					});
-				}
-			});
+			this.submitMessage();
 		}
+	}
+
+	submitMessage() {
+		Meteor.call("storyContent.insert", this.state.content, this.props.storyId, this.props.storyMeta.end_sentence, (error, result) => {
+			if (error !== undefined && error !== null) {
+				// show some tips
+			} else {
+				this.setState({
+					content: "",
+				});
+			}
+		});
 	}
 
 	render() {
 		return (
 			<Col lg={"9"}>
 				<div className={"story-board"}>
+					<Alert variant={"info"}>
+						{this.props.storyMeta.start_sentence}
+					</Alert>
 					<p>{this.renderStoryContent()}</p>
+					<Alert variant={"light"}>
+						{this.props.storyMeta.end_sentence}
+					</Alert>
 				</div>
 				<InputGroup className="my-3">
 					<Form.Label>What happens next: </Form.Label>
@@ -59,7 +69,7 @@ class StoryBoard extends Component {
 						onKeyPress={(e) => {this.handleKeyPress(e);}}
 					/>
 					<InputGroup.Append>
-						<Button variant="success">Submit</Button>
+						<Button variant="success" onClick={() => this.submitMessage()}>Submit</Button>
 					</InputGroup.Append>
 				</InputGroup>
 			</Col>
