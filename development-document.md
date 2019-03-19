@@ -23,6 +23,7 @@
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
 | _id | string | 故事的id，每个故事的唯一标识 |
+| title | string | 故事的标题 |
 | start_time | date | 故事的创建时间 |
 | end_time | date | 故事的结束时间 |
 | start_sentence | string | 故事的第一句话 |

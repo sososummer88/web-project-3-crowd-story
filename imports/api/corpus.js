@@ -10,6 +10,27 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+	"corpus.getRandomStartAndEnd"() {
+		if (Meteor.isServer) {
+			const sentence = Corpus.find({}, {fields: {content: 1}}).fetch();
+			const index = Math.floor(Math.random() * sentence.length);
+			const startSentence = sentence[index].content;
+			let index2 = Math.floor(Math.random() * sentence.length);
+			while (index === index2) {
+				index2 = Math.floor(Math.random() * sentence.length);
+			}
+			const endSentence = sentence[index2].content;
+			return {
+				startSentence: startSentence,
+				endSentence: endSentence,
+			};
+		} else {
+			return {
+				startSentence: "",
+				endSentence: "",
+			};
+		}
+	},
 	"corpus.add"(sentence) {
 		Corpus.insert({content: sentence, time: new Date()});
 	},
@@ -17,3 +38,7 @@ Meteor.methods({
 		Corpus.remove({_id: id});
 	},
 });
+
+async function getNext(cursor) {
+	return cursor.next();
+}

@@ -20,20 +20,15 @@ if (Meteor.isServer) {
 const bound = Meteor.bindEnvironment((callback) => {callback();});
 
 Meteor.methods({
-	"story.createNewStory"() {
+	"story.createNewStory"(title, startSentence, endSentence) {
 		if (Meteor.isServer) {
-			const id = StoryMeta.insert({
+			return StoryMeta.insert({
+				title: title,
+				start_sentence: startSentence,
+				end_sentence: endSentence,
 				start_time: new Date(),
 				finished: false,
 			});
-			Corpus.rawCollection().aggregate([{ $sample: { size: 2 } }]).toArray((error, result) => {
-				bound(() => {
-					StoryMeta.update(
-						{_id: id},
-						{$set: {start_sentence: result[0].content, end_sentence: result[1].content}});
-				});
-			});
-			return id;
 		} else {
 			StoryMeta.insert({
 				start_time: new Date(),
