@@ -16,7 +16,7 @@ class StoryBoard extends Component {
 	}
 
 	renderStoryContent() {
-		return this.props.story.map((value) => {
+		return this.props.storyContent.map((value) => {
 			return (
 				<span className={"story-content m-1"} key={value._id}>{value.content}</span>
 			);
@@ -69,12 +69,13 @@ class StoryBoard extends Component {
 
 StoryBoard.propTypes = {
 	storyId: PropTypes.string,
-	story: PropTypes.array,
+	storyContent: PropTypes.array,
+	storyMeta: PropTypes.object,
 };
 
 export default withTracker((props) => {
 	Meteor.subscribe("storyContent", props.storyId);
 	return {
-		story: StoryContent.find({}).fetch(),
+		storyContent: StoryContent.find({}).fetch(),
 	};
 })(StoryBoard);

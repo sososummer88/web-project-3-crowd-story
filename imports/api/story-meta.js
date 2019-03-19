@@ -3,13 +3,16 @@ import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 import { Corpus } from "./corpus";
 
-export const Story = new Mongo.Collection("story");
+export const StoryMeta = new Mongo.Collection("story");
 
 if (Meteor.isServer) {
-	Meteor.publish("story", function getStoryMeta() {
-		return Story.find(
+	Meteor.publish("storyMetas", function getStoryMetas() {
+		return StoryMeta.find(
 			{finished: false},
 			{sort: {start_time: 1}});
+	});
+	Meteor.publish("storyMeta", function getStoryMeta(storyId) {
+		return StoryMeta.find({_id: storyId});
 	});
 }
 
@@ -19,18 +22,20 @@ const bound = Meteor.bindEnvironment((callback) => {callback();});
 Meteor.methods({
 	"story.createNewStory"() {
 		if (Meteor.isServer) {
+			const id = StoryMeta.insert({
+				start_time: new Date(),
+				finished: false,
+			});
 			Corpus.rawCollection().aggregate([{ $sample: { size: 2 } }]).toArray((error, result) => {
 				bound(() => {
-					Story.insert({
-						start_time: new Date(),
-						start_sentence: result[0].content,
-						end_sentence: result[1].content,
-						finished: false,
-					});
+					StoryMeta.update(
+						{_id: id},
+						{$set: {start_sentence: result[0].content, end_sentence: result[1].content}});
 				});
 			});
+			return id;
 		} else {
-			Story.insert({
+			StoryMeta.insert({
 				start_time: new Date(),
 				finished: false,
 			});
