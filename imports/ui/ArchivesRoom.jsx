@@ -5,6 +5,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Vote } from "../api/vote_info";
 import AccountLogin from "./AccountLogin.jsx";
 import NavigationBar from "./NavigationBar";
+import { Button, Row } from "react-bootstrap";
 
 class ArchivesRoom extends Component {
 	constructor(props) {
@@ -13,10 +14,39 @@ class ArchivesRoom extends Component {
 			ranking: ""
 		};
 	}
+	handleOnClick1(_id) {
+		Meteor.call("vote.upLikes", _id, (error, result) => {
+			if (error !== undefined && error !== null) {
+				// show some tips
+			} else {
+				console.log(result);
+			}
+		});
+	}
+
+	handleOnClick2(_id) {
+		Meteor.call("vote.downLikes", _id, (error, result) => {
+			if (error !== undefined && error !== null) {
+				// show some tips
+			} else {
+				console.log(result);
+			}
+		});
+	}
 
 	renderRanking() {
-		return this.props.ranking.map(m =>
-			<div className="card" key={m._id}>{m.storyId} : {m.upvote}</div>);
+		return this.props.ranking.map(m => {
+			console.log(m);
+			return (
+				<Row key={m._id}>
+					<div className="card" key={m._id}>{m.storyId}</div>
+					<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
+					<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>
+				</Row>
+			);
+		});
+
+
 	}
 
 	render() {

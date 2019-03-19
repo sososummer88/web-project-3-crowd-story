@@ -5,6 +5,7 @@ import Admin from "./Admin";
 import StoryRoom from "./StoryRoom";
 import "./style.scss";
 import ArchivesRoom from "./ArchivesRoom.jsx";
+import Footer from "./Footer.jsx";
 
 
 const App=() => (
