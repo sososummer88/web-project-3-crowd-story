@@ -44,8 +44,8 @@ class ArchivesRoom extends Component {
 						<img className="ui avatar image" src="images/storyLogo.jpg" alt="Story Image" />
 						<div className = "content">
 							<div className="header" key={m._id}>{m.storyId}</div>
-							<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
-							<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>
+							<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)} align="right"> {m.upvote} 👍 </Button>
+							<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)} align="right"> {m.downvote} 👎 </Button>
 						</div>
 					</div>
 				</div>
