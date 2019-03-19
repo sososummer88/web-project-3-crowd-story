@@ -1,18 +1,23 @@
 import React from "react";
-import AccountLogin from "./AccountLogin.jsx";
-import NavigationBar from "./NavigationBar";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import Hall from "./Hall";
+import Admin from "./Admin";
+import StoryRoom from "./StoryRoom";
 import "./style.scss";
 import ArchivesRoom from "./ArchivesRoom.jsx";
 
-const App = () => (
-	<div>
-		<NavigationBar />
-		<h2>Welcome to Crowd Story!</h2>
-		<h3>Please Sign in First!</h3>
-		<h4><AccountLogin /></h4>
-		<ArchivesRoom />
-	</div>
 
-);
+const App=() => (
+	<div>
+		<Router>
+			<div>
+				<Route exact path="/" component={Hall} />
+				<Route exact path="/admin" component={Admin} />
+				<Route path="/story-room/:storyId" component={StoryRoom} />
+				<Route path="/archives-room" component={ArchivesRoom} />
+			</div>
+		</Router>
+	</div>
+)
 
 export default App;

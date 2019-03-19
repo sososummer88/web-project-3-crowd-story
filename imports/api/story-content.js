@@ -2,25 +2,25 @@ import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
-export const Stories = new Mongo.Collection("stories");
+export const StoryContent = new Mongo.Collection("story_content");
 
 if (Meteor.isServer) {
-	Meteor.publish("stories", function getStory() {
-		return Stories.find(
+	Meteor.publish("storyContent", function getStory() {
+		return StoryContent.find(
 			{},
 			{sort: {time: 1}});
 	});
 }
 
 Meteor.methods({
-	"storyBoard.insert"(content, storyId) {
-		Stories.insert({
+	"storyContent.insert"(content, storyId) {
+		StoryContent.insert({
 			content: content,
 			storyId: storyId,
 			time: new Date(),
 		});
 	},
-	"storyBoard.delete"(id) {
+	"storyContent.delete"(id) {
 
 	},
 });

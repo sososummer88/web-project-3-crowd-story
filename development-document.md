@@ -17,7 +17,8 @@
 
 ## 数据库设计
 
-表名：story
+表名：story  
+说明：记录故事的元数据信息
 
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
@@ -28,7 +29,8 @@
 | end_sentence | string | 故事的最后一句话 |
 | finished | boolean | 标记当前故事是否结束。true已经结束，false尚未结束 |
 
-表名：story-content
+表名：story_content  
+说明：记录故事的内容
 
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
@@ -38,20 +40,41 @@
 | time | date | 这行内容的创建时间 |
 | content | string | 内容 |
 
-表名：users
+表名：vote_info  
+说明：记录已完成的故事的投票信息。只有story.finished为true的故事才会在这张表中有记录
 
-| 字段名 | 类型 | 说明 |
-|-------|-----|------|
-| _id | ObjectId | MongoDB生成的id |
-| email | string | 邮箱 |
-| username | string | 用户名 |
-| password | string | 密码 |
-| time | date | 创建时间 |
-
-表名：vote_info
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
 | _id | ObjectId | MongoDB生成的id |
 | storyId | string | 投票信息属于哪个故事。这个字段对应于story表中的id字段 |
 | upvote | number | 支持这个故事的票数 |
 | downvote | number | 反对这个故事的票数 |
+
+表名：users
+说明：用户信息，由Meteor维护
+
+| 字段名 | 类型 | 说明 |
+|-------|-----|------|
+| _id | ObjectId | MongoDB生成的id，用户的唯一标识 |
+| username | string | 用户名，同样是用户的唯一标识 |
+users这张表由Meteor生成和维护。这里的表结构信息只是截取了Meteor中对我们有用的几个字段。其他字段的内容和作用请查看Meteor的相关文档
+
+表名：chat_info  
+说明：投票信息
+
+| 字段名 | 类型 | 说明 |
+|-------|-----|------|
+| _id | ObjectId | MongoDB生成的id |
+| storyId | string | 消息所隶属的故事，与story中的_id字段相对应 |
+| username | string | 发送这条消息的用户的用户名，与users表中的username字段对应 |
+| message | string | 消息内容 |
+| time | date | 消息创建时间 |
+
+表名：corpus
+说明：start_sentence和end_sentence的语料来源
+
+| 字段名 | 类型 | 说明 |
+|-------|-----|------|
+| _id | ObjectId | MongoDB生成的id |
+| content | string | 语料内容 |
+| time | date | 语料创建时间 |
