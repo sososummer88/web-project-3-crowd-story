@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Button, Modal, Form, InputGroup, Card } from "react-bootstrap";
+import { Row, Col, Button, Modal, Form, InputGroup, Card, CardColumns } from "react-bootstrap";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import PropTypes from "prop-types";
@@ -8,6 +8,7 @@ import { Link, Redirect } from "react-router-dom";
 import NavigationBar from "./NavigationBar";
 import AccountLogin from "./AccountLogin";
 import { StoryMeta } from "../api/story-meta";
+import "./page.css";
 
 class Hall extends Component {
 	constructor(props) {
@@ -24,21 +25,19 @@ class Hall extends Component {
 	renderUncompletedStoryList() {
 		return this.props.uncompletedStories.map((value) => {
 			return (
-				<Col lg={"4"} key={value._id}>
-					<Card>
-						<Card.Header>
-							<Card.Title>{value.title}</Card.Title>
-						</Card.Header>
-						<Card.Body>
-							<Card.Text><strong>Start Sentence: </strong>{value.start_sentence}</Card.Text>
-							<Card.Text>...</Card.Text>
-							<Card.Text><strong>End Sentence: </strong>{value.end_sentence}</Card.Text>
-						</Card.Body>
-						<Card.Footer>
-							<Link to={"/story-room/" + value._id}><Button variant={"primary"}>Join</Button></Link>
-						</Card.Footer>
-					</Card>
-				</Col>
+				<Card key={value._id}>
+					<Card.Header>
+						<Card.Title>{value.title}</Card.Title>
+					</Card.Header>
+					<Card.Body>
+						<Card.Text><strong>Start Sentence: </strong>{value.start_sentence}</Card.Text>
+						<Card.Text>...</Card.Text>
+						<Card.Text><strong>End Sentence: </strong>{value.end_sentence}</Card.Text>
+					</Card.Body>
+					<Card.Footer>
+						<Link to={"/story-room/" + value._id}><Button variant={"primary"}>Join</Button></Link>
+					</Card.Footer>
+				</Card>
 			);
 		});
 	}
@@ -132,9 +131,9 @@ class Hall extends Component {
 						</Col>
 					</Row>
 					<hr/>
-					<Row>
+					<CardColumns>
 						{this.renderUncompletedStoryList()}
-					</Row>
+					</CardColumns>
 				</div>
 			);
 		}
