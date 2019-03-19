@@ -77,5 +77,5 @@ users这张表由Meteor生成和维护。这里的表结构信息只是截取了
 | 字段名 | 类型 | 说明 |
 |-------|-----|------|
 | _id | ObjectId | MongoDB生成的id |
-| content | string | 语料内容 |
+| content | string | 语料内容，自己编的 |
 | time | date | 语料创建时间 |
