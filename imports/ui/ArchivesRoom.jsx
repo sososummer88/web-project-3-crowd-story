@@ -5,7 +5,8 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Vote } from "../api/vote_info";
 import AccountLogin from "./AccountLogin.jsx";
 import NavigationBar from "./NavigationBar";
-import { Button, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Button, Icon, Label } from "semantic-ui-react";
 
 class ArchivesRoom extends Component {
 	constructor(props) {
@@ -40,8 +41,8 @@ class ArchivesRoom extends Component {
 			return (
 				<Row key={m._id}>
 					<div className="card" key={m._id}>{m.storyId}</div>
-					<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
-					<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>
+					{/*<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>*/}
+					{/*<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>*/}
 				</Row>
 			);
 		});
@@ -58,6 +59,15 @@ class ArchivesRoom extends Component {
 				<h4><AccountLogin /></h4>
 				<h2>Ranking</h2>
 				<div className="ranking">{this.renderRanking()}</div>
+				<Button as='div' labelPosition='right'>
+					<Button color='red'>
+						<Icon name='heart' />
+						Like
+					</Button>
+					<Label as='a' basic color='red' pointing='left'>
+						2,048
+					</Label>
+				</Button>
 			</div>
 		);
 	}
