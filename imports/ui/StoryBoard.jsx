@@ -37,15 +37,17 @@ class StoryBoard extends Component {
 	}
 
 	submitMessage() {
-		Meteor.call("storyContent.insert", this.state.content, this.props.storyId, this.props.storyMeta.end_sentence, (error, result) => {
-			if (error !== undefined && error !== null) {
-				// show some tips
-			} else {
-				this.setState({
-					content: "",
-				});
-			}
-		});
+		if (!this.props.storyMeta.finished) {
+			Meteor.call("storyContent.insert", this.state.content, this.props.storyId, this.props.storyMeta.end_sentence, (error) => {
+				if (error !== undefined && error !== null) {
+					// show some tips
+				} else {
+					this.setState({
+						content: "",
+					});
+				}
+			});
+		}
 	}
 
 	render() {
