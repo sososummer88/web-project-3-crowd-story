@@ -35,7 +35,7 @@ export default class FooterPage extends Component {
 				<div className="footer-copyright text-center py-3">
 					<MDBContainer fluid>
 						&copy; {new Date().getFullYear()} Copyright: <a
-							href="https://www.MDBootstrap.com"> Yibo and Fang's Project 2019 </a>
+							href="https://www.MDBootstrap.com"> Yibo and Fang&#39;s Project 2019 </a>
 					</MDBContainer>
 				</div>
 			</MDBFooter>

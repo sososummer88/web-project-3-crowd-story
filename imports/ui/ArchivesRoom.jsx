@@ -17,21 +17,17 @@ class ArchivesRoom extends Component {
 		};
 	}
 	handleOnClick1(_id) {
-		Meteor.call("vote.upLikes", _id, (error, result) => {
+		Meteor.call("vote.upLikes", _id, (error) => {
 			if (error !== undefined && error !== null) {
-				// show some tips
-			} else {
-				console.log(result);
+				// TODO: show some tips
 			}
 		});
 	}
 
 	handleOnClick2(_id) {
-		Meteor.call("vote.downLikes", _id, (error, result) => {
+		Meteor.call("vote.downLikes", _id, (error) => {
 			if (error !== undefined && error !== null) {
-				// show some tips
-			} else {
-				console.log(result);
+				// TODO: show some tips
 			}
 		});
 	}
@@ -56,8 +52,6 @@ class ArchivesRoom extends Component {
 				</div>
 			);
 		});
-
-
 	}
 
 	render() {

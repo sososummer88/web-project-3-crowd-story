@@ -67,11 +67,9 @@ export default class Barrage extends Component {
 
 	componentWillUnmount() {
 		if (this.fetchFunctionId !== null) {
-			console.log("Remove retrieve interval ");
 			clearInterval(this.fetchFunctionId);
 		}
 		if (this.barrageInterval !== null) {
-			console.log("Remove drawing interval ");
 			clearInterval((this.barrageInterval));
 		}
 	}

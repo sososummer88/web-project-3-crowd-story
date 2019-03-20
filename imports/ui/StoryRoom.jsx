@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";
+import { Row, Col, Modal, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
@@ -10,6 +10,7 @@ import StoryBoard from "./StoryBoard";
 import ChatBoard from "./ChatBoard";
 import FooterPage from "./Footer.jsx";
 import Barrage from "./Barrage";
+import NavigationBar from "./NavigationBar";
 
 class StoryRoom extends Component {
 	constructor(props) {
@@ -37,7 +38,6 @@ class StoryRoom extends Component {
 				<Redirect to={"/"}/>
 			);
 		}
-		console.log(Meteor.user());
 		if (this.state.jump) {
 			return (
 				<Redirect to={"/archives-room"} />
@@ -47,7 +47,8 @@ class StoryRoom extends Component {
 				if (this.props.storyMeta !== null && this.props.storyMeta.length > 0) {
 					this.waitForJump();
 					return (
-						<Container>
+						<div>
+							<NavigationBar />
 							<Row id={"barrageCanvasRow"}>
 								<Barrage storyId={this.props.match.params.storyId} enterTime={this.enterTime} />
 							</Row>
@@ -80,8 +81,7 @@ class StoryRoom extends Component {
 								</Modal.Footer>
 							</Modal>
 							<FooterPage />
-						</Container>
-
+						</div>
 					);
 				} else {
 					return (

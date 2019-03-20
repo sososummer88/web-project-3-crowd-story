@@ -43,6 +43,6 @@ Meteor.methods({
 		}
 	},
 	"storyContent.delete"(id) {
-
+		StoryContent.remove({_id: id});
 	},
 });
