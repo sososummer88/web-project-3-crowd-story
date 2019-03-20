@@ -9,6 +9,7 @@ import NavigationBar from "./NavigationBar";
 import AccountLogin from "./AccountLogin";
 import { StoryMeta } from "../api/story-meta";
 import "./page.css";
+import FooterPage from "./Footer.jsx";
 
 class Hall extends Component {
 	constructor(props) {
@@ -124,6 +125,7 @@ class Hall extends Component {
 					<h2>Welcome to Crowd Story!</h2>
 					<h3>Please Sign in First!</h3>
 					<AccountLogin/>
+
 					<Row>
 						<Col lg={"10"}> </Col>
 						<Col lg={"2"}>
@@ -134,8 +136,11 @@ class Hall extends Component {
 					<CardColumns>
 						{this.renderUncompletedStoryList()}
 					</CardColumns>
+					<FooterPage />
 				</div>
+
 			);
+
 		}
 	}
 }

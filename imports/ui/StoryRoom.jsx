@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 
 import StoryBoard from "./StoryBoard";
 import ChatBoard from "./ChatBoard";
-
+import FooterPage from "./Footer.jsx";
 
 class StoryRoom extends Component {
 	constructor(props) {
@@ -69,7 +69,9 @@ class StoryRoom extends Component {
 									<Button onClick={this.props.onHide}>Close</Button>
 								</Modal.Footer>
 							</Modal>
+							<FooterPage />
 						</Container>
+
 					);
 				} else {
 					return (
@@ -83,6 +85,7 @@ class StoryRoom extends Component {
 							Loading...
 						</Col>
 					</Row>
+
 				);
 			}
 		}
