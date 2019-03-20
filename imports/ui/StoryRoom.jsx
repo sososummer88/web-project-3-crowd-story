@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import StoryBoard from "./StoryBoard";
 import ChatBoard from "./ChatBoard";
 import FooterPage from "./Footer.jsx";
+import Barrage from "./Barrage";
 
 class StoryRoom extends Component {
 	constructor(props) {
@@ -16,6 +17,7 @@ class StoryRoom extends Component {
 		this.state = {
 			jump: false,
 		};
+		this.enterTime = (new Date()).getTime();
 	}
 
 	waitForJump() {
@@ -40,12 +42,13 @@ class StoryRoom extends Component {
 					this.waitForJump();
 					return (
 						<Container>
-							<Row></Row>
+							<Row id={"barrageCanvasRow"}>
+								<Barrage storyId={this.props.match.params.storyId} enterTime={this.enterTime} />
+							</Row>
 							<Row>
 								<StoryBoard storyId={this.props.match.params.storyId} storyMeta={this.props.storyMeta[0]}/>
-								<ChatBoard storyId={this.props.match.params.storyId} enterTime={(new Date()).getTime()}/>
+								<ChatBoard storyId={this.props.match.params.storyId} enterTime={this.enterTime}/>
 							</Row>
-							<Row></Row>
 							<Modal
 								show={this.props.storyMeta[0].finished}
 								size="lg"

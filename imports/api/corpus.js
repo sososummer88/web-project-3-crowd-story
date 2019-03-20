@@ -38,7 +38,3 @@ Meteor.methods({
 		Corpus.remove({_id: id});
 	},
 });
-
-async function getNext(cursor) {
-	return cursor.next();
-}

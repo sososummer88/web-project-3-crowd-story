@@ -74,7 +74,6 @@ ChatBoard.propTypes = {
 
 export default withTracker((props) => {
 	Meteor.subscribe("chatInfo", props.storyId, props.enterTime);
-
 	return {
 		chatInfo: ChatInfo.find({}).fetch(),
 	};
