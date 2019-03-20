@@ -14,6 +14,15 @@ if (Meteor.isServer) {
 	Meteor.publish("storyMeta", function getStoryMeta(storyId) {
 		return StoryMeta.find({_id: storyId});
 	});
+	Meteor.publish("Ranking", function rankingPublish() {
+		return StoryMeta
+			.find({finished: true}, {
+				limit: 20,
+				sort: {
+					createdAt: -1
+				}
+			});
+	});
 }
 
 // In order to use callback function for no-meteor libraries, we need to bind those callback functions to environment.
@@ -28,6 +37,8 @@ Meteor.methods({
 				end_sentence: endSentence,
 				start_time: new Date(),
 				finished: false,
+				upvote: 0,
+				downvote: 0,
 			});
 		} else {
 			StoryMeta.insert({
@@ -35,5 +46,11 @@ Meteor.methods({
 				finished: false,
 			});
 		}
+	},
+	"vote.upLikes"(_id){
+		StoryMeta.update({ _id: _id }, {$inc: {upvote: 1}});
+	},
+	"vote.downLikes"(_id){
+		StoryMeta.update({ _id: _id }, {$inc: {downvote: 1}});
 	}
 });

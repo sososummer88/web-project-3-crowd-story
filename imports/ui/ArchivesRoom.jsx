@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
-import { Vote } from "../api/vote_info";
+//import { Vote } from "../api/vote_info";
 import AccountLogin from "./AccountLogin.jsx";
 import NavigationBar from "./NavigationBar";
 import { Button } from "react-bootstrap";
+import { StoryMeta } from "../api/story-meta";
+import FooterPage from "./Footer.jsx";
+
 //import { Button, Icon, Label } from "semantic-ui-react";
 
 class ArchivesRoom extends Component {
@@ -39,16 +42,22 @@ class ArchivesRoom extends Component {
 		return this.props.ranking.map(m => {
 			console.log(m);
 			return (
-				<div className ="ui celled list" key = {m._id}>
+				<div className ="ui middle aligned divided list" key = {m._id}>
 					<div className = "item">
-						<img className="ui avatar image" src="images/storyLogo.jpg" alt="Story Image" />
+						<div className="right floated content">
+							<div className="ui button">
+								<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
+								<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>
+							</div>
+						</div>
+						<img className="ui avatar image" src="images/storyLogo2.jpg" alt="Story Image" />
 						<div className = "content">
-							<div className="header" key={m._id}>{m.storyId}</div>
-							<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)} align="right"> {m.upvote} 👍 </Button>
-							<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)} align="right"> {m.downvote} 👎 </Button>
+							<div className="header" key={m._id}>{m.title}</div>
 						</div>
 					</div>
+					<hr />
 				</div>
+
 				// <Row key={m._id}>
 				// 	<div className="card" key={m._id}>{m.storyId}</div>
 				// 	<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
@@ -69,6 +78,7 @@ class ArchivesRoom extends Component {
 				<h4><AccountLogin /></h4>
 				<h2>Ranking</h2>
 				<div className="ranking">{this.renderRanking()}</div>
+				<FooterPage />
 				{/*<Button as='div' labelPosition='right'>*/}
 					{/*<Button color='red'>*/}
 						{/*<Icon name='heart' />*/}
@@ -92,7 +102,7 @@ ArchivesRoom.propTypes = {
 export default withTracker(() => {
 	const handle = Meteor.subscribe("Ranking");
 	return {
-		ranking: Vote.find({},{
+		ranking: StoryMeta.find({},{
 			sort:{
 				upvote:-1
 			}

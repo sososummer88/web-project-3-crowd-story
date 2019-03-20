@@ -1,22 +1,46 @@
-import React, { Component } from "react";
-import StickyFooter from 'react-sticky-footer';
+import React, {Component} from "react";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
-export default class Footer extends Component {
-		render (){
-			return (
-				<StickyFooter
-					bottomThreshold={50}
-					normalStyles={{
-						backgroundColor: "#999999",
-						padding: "2rem"
-					}}
-					stickyStyles={{
-						backgroundColor: "rgba(255,255,255,.8)",
-						padding: "2rem"
-					}}
-				>
-					// Add any footer markup here
-				</StickyFooter>
-			);
-		}
+
+export default class FooterPage extends Component {
+	render() {
+		return (
+			<MDBFooter color="blue" className="font-small pt-4 mt-4">
+				<MDBContainer fluid className="text-center text-md-left">
+					<MDBRow>
+						<MDBCol md="6">
+							<h5 className="title">Contact Us</h5>
+							<p>
+								Email: yibo.zhao1003@outlook.com & summerhong1@gmail.com
+								<br />
+								6024 Silver Creek Valley Rd, San Jose, CA 95138
+							</p>
+						</MDBCol>
+						<MDBCol md="6">
+							<h5 className="title">Links</h5>
+							<ul>
+								<li className="list-unstyled">
+									<a href="#!">Privacy Police</a>
+								</li>
+								<li className="list-unstyled">
+									<a href="#!">Term of Use</a>
+								</li>
+							</ul>
+						</MDBCol>
+					</MDBRow>
+				</MDBContainer>
+				<div className="footer-copyright text-center py-3">
+					<MDBContainer fluid>
+						&copy; {new Date().getFullYear()} Copyright: <a
+							href="https://www.MDBootstrap.com"> Yibo and Fang's Project 2019 </a>
+					</MDBContainer>
+				</div>
+			</MDBFooter>
+		);
+	}
 }
+
+
