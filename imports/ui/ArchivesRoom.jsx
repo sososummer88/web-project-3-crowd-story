@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
-//import { Vote } from "../api/vote_info";
 import AccountLogin from "./AccountLogin.jsx";
 import NavigationBar from "./NavigationBar";
 import { Button } from "react-bootstrap";
 import { StoryMeta } from "../api/story-meta";
 import FooterPage from "./Footer.jsx";
-
-//import { Button, Icon, Label } from "semantic-ui-react";
+import {Redirect} from "react-router-dom";
 
 class ArchivesRoom extends Component {
 	constructor(props) {
@@ -40,7 +38,6 @@ class ArchivesRoom extends Component {
 
 	renderRanking() {
 		return this.props.ranking.map(m => {
-			console.log(m);
 			return (
 				<div className ="ui middle aligned divided list" key = {m._id}>
 					<div className = "item">
@@ -57,12 +54,6 @@ class ArchivesRoom extends Component {
 					</div>
 					<hr />
 				</div>
-
-				// <Row key={m._id}>
-				// 	<div className="card" key={m._id}>{m.storyId}</div>
-				// 	<Button variant={"primary"} onClick={() => this.handleOnClick1(m._id)}> {m.upvote} 👍 </Button>
-				// 	<Button variant={"primary"} onClick={() => this.handleOnClick2(m._id)}> {m.downvote} 👎 </Button>
-				// </Row>
 			);
 		});
 
@@ -70,6 +61,11 @@ class ArchivesRoom extends Component {
 	}
 
 	render() {
+		if (Meteor.user() === undefined || Meteor.user() === null) {
+			return (
+				<Redirect to={"/"}/>
+			);
+		}
 		return (
 			<div>
 				<NavigationBar />
@@ -79,15 +75,6 @@ class ArchivesRoom extends Component {
 				<h2>Ranking</h2>
 				<div className="ranking">{this.renderRanking()}</div>
 				<FooterPage />
-				{/*<Button as='div' labelPosition='right'>*/}
-					{/*<Button color='red'>*/}
-						{/*<Icon name='heart' />*/}
-						{/*Like*/}
-					{/*</Button>*/}
-					{/*<Label as='a' basic color='red' pointing='left'>*/}
-						{/*2,048*/}
-					{/*</Label>*/}
-				{/*</Button>*/}
 			</div>
 		);
 	}

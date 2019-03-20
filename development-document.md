@@ -29,6 +29,8 @@
 | start_sentence | string | 故事的第一句话 |
 | end_sentence | string | 故事的最后一句话 |
 | finished | boolean | 标记当前故事是否结束。true已经结束，false尚未结束 |
+| upvote | number | 支持这个故事的票数 |
+| downvote | number | 反对这个故事的票数 |
 
 表名：story_content  
 说明：记录故事的内容
@@ -40,16 +42,6 @@
 | author | string | 这行内容的作者 |
 | time | date | 这行内容的创建时间 |
 | content | string | 内容 |
-
-表名：vote_info  
-说明：记录已完成的故事的投票信息。只有story.finished为true的故事才会在这张表中有记录
-
-| 字段名 | 类型 | 说明 |
-|-------|-----|------|
-| _id | ObjectId | MongoDB生成的id |
-| storyId | string | 投票信息属于哪个故事。这个字段对应于story表中的id字段 |
-| upvote | number | 支持这个故事的票数 |
-| downvote | number | 反对这个故事的票数 |
 
 表名：users
 说明：用户信息，由Meteor维护

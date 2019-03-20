@@ -6,7 +6,6 @@ import "./page.css";
 export default class Barrage extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.fetchFunctionId = null;
 		this.barrageInterval = null;
 		this.latestTime = new Date(this.props.enterTime);

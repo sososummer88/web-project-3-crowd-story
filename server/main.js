@@ -1,5 +1,4 @@
 import { Meteor } from "meteor/meteor";
-import "../imports/api/vote_info";
 import "../imports/api/story-content";
 import "../imports/api/chat-info";
 import "../imports/api/story-meta";

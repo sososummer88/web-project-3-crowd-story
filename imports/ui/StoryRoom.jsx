@@ -32,6 +32,12 @@ class StoryRoom extends Component {
 	}
 
 	render() {
+		if (Meteor.user() === undefined || Meteor.user() === null) {
+			return (
+				<Redirect to={"/"}/>
+			);
+		}
+		console.log(Meteor.user());
 		if (this.state.jump) {
 			return (
 				<Redirect to={"/archives-room"} />
@@ -53,6 +59,7 @@ class StoryRoom extends Component {
 								show={this.props.storyMeta[0].finished}
 								size="lg"
 								aria-labelledby="contained-modal-title-vcenter"
+								onHide={() => {}}
 								centered
 							>
 								<Modal.Header closeButton>
@@ -69,7 +76,7 @@ class StoryRoom extends Component {
 									</p>
 								</Modal.Body>
 								<Modal.Footer>
-									<Button onClick={this.props.onHide}>Close</Button>
+									<Button onClick={() => {}}>Jump to archives room</Button>
 								</Modal.Footer>
 							</Modal>
 							<FooterPage />

@@ -3,7 +3,6 @@ import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
 import { StoryMeta } from "./story-meta";
-import { Vote } from "./vote_info";
 
 export const StoryContent = new Mongo.Collection("story_content");
 
@@ -17,20 +16,28 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	"storyContent.insert"(content, storyId, endSentence) {
+		check(content, String);
+		check(storyId, String);
+		check(endSentence, String);
+
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 		if (Meteor.isServer) {
 			if (content === endSentence) {
 				StoryMeta.update({_id: storyId}, {$set: {finished: true}});
-				Vote.insert({storyId: storyId, upvote: 0, downvote: 0});
 			}
 			StoryContent.insert({
 				content: content,
 				storyId: storyId,
+				author: Meteor.user().username,
 				time: new Date(),
 			});
 		} else {
 			StoryContent.insert({
 				content: content,
 				storyId: storyId,
+				author: Meteor.user().username,
 				time: new Date(),
 			});
 		}

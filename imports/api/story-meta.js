@@ -1,7 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
-import { Corpus } from "./corpus";
 
 export const StoryMeta = new Mongo.Collection("story");
 
@@ -26,10 +25,17 @@ if (Meteor.isServer) {
 }
 
 // In order to use callback function for no-meteor libraries, we need to bind those callback functions to environment.
-const bound = Meteor.bindEnvironment((callback) => {callback();});
+// const bound = Meteor.bindEnvironment((callback) => {callback();});
 
 Meteor.methods({
 	"story.createNewStory"(title, startSentence, endSentence) {
+		check(title, String);
+		check(startSentence, String);
+		check(endSentence, String);
+
+		if (!Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 		if (Meteor.isServer) {
 			return StoryMeta.insert({
 				title: title,
@@ -48,9 +54,15 @@ Meteor.methods({
 		}
 	},
 	"vote.upLikes"(_id){
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 		StoryMeta.update({ _id: _id }, {$inc: {upvote: 1}});
 	},
 	"vote.downLikes"(_id){
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 		StoryMeta.update({ _id: _id }, {$inc: {downvote: 1}});
 	}
 });

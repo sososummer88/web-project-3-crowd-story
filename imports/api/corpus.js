@@ -1,4 +1,4 @@
-import { Mongo, ObjectID } from "meteor/mongo";
+import { Mongo } from "meteor/mongo";
 import { Meteor } from "meteor/meteor";
 
 export const Corpus = new Mongo.Collection("corpus");
@@ -11,6 +11,9 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	"corpus.getRandomStartAndEnd"() {
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 		if (Meteor.isServer) {
 			const sentence = Corpus.find({}, {fields: {content: 1}}).fetch();
 			const index = Math.floor(Math.random() * sentence.length);

@@ -18,13 +18,13 @@ Meteor.methods({
 		check(storyId, String);
 		check(message, String);
 
-		// if (! this.userId) {
-		// 	throw new Meteor.Error("not-authorized");
-		// }
+		if (!Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
 
 		ChatInfo.insert({
 			storyId: storyId,
-			username: "test-user",
+			username: Meteor.user().username,
 			message: message,
 			time: new Date(),
 		});
@@ -32,6 +32,11 @@ Meteor.methods({
 	"chatInfo.getLatestChats"(storyId, date) {
 		check(storyId, String);
 		check(date, Date);
+
+		if (!Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
+
 		return ChatInfo.find(
 			{storyId: storyId, time: {$gt: date}},
 			{sort: {time: -1}, fields: {message: 1, time: 1}}).fetch();
