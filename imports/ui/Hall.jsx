@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
 
 import NavigationBar from "./NavigationBar";
-import AccountLogin from "./AccountLogin";
 import { StoryMeta } from "../api/story-meta";
 import "./page.css";
 import FooterPage from "./Footer.jsx";
@@ -28,12 +27,12 @@ class Hall extends Component {
 			return (
 				<Card className={"story-card"} key={value._id}>
 					<Card.Header>
-						<Card.Title>{value.title}</Card.Title>
+						<Card.Title className={"story-card-title"}>{value.title}</Card.Title>
 					</Card.Header>
 					<Card.Body>
-						<Card.Text><strong>Start Sentence: </strong>{value.start_sentence}</Card.Text>
-						<Card.Text>...</Card.Text>
-						<Card.Text><strong>End Sentence: </strong>{value.end_sentence}</Card.Text>
+						<Card.Text className={"story-card-text"}><strong>Start Sentence: </strong>{value.start_sentence}</Card.Text>
+						<Card.Text className={"story-card-text"}>...</Card.Text>
+						<Card.Text className={"story-card-text"}><strong>End Sentence: </strong>{value.end_sentence}</Card.Text>
 					</Card.Body>
 					<Card.Footer>
 						<Link to={"/story-room/" + value._id}><Button variant={"primary"}>Join</Button></Link>
@@ -125,7 +124,7 @@ class Hall extends Component {
 					<Row>
 						<Col lg={"10"}> </Col>
 						<Col lg={"2"}>
-							<Button variant={"primary"} onClick={() => this.handleOnClick()}>+New Story</Button>
+							<Button className={"select-button"} variant={"primary"} onClick={() => this.handleOnClick()}>+New Story</Button>
 						</Col>
 					</Row>
 					<hr/>

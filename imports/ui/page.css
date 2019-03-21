@@ -34,10 +34,26 @@
 }
 
 .story-card {
-    transition: transform 0.2s, z-index 0.1ms;
+    transition: transform 0.2s, z-index 0.1ms, color 0.2s;
 }
 
 .story-card:hover {
     transform: scale(1.3);
     z-index: 999;
+}
+
+.story-card:hover .story-card-title {
+    color: black !important;
+}
+
+.story-card:hover .story-card-text {
+    color: black !important;
+}
+
+.select-button {
+    transition: font-weight 0.1s;
+}
+
+.select-button:hover {
+    font-weight: bold;
 }

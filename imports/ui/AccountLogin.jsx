@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Template } from "meteor/templating";
 import { Blaze } from "meteor/blaze";
+import {Meteor} from "meteor/meteor";
 
 
 export default class AccountsUIWrapper extends Component {
@@ -15,6 +16,11 @@ export default class AccountsUIWrapper extends Component {
 
 	render() {
 		// Just render a placeholder container that will be filled in
-		return <span ref={container => (this.container = container)}/>;
+		return (
+			<div>
+				{Meteor.user() === undefined || Meteor.user() === null ? <h3>Please Sign in First!</h3> : ""}
+				<span ref={container => (this.container = container)} />
+			</div>
+		);
 	}
 }
