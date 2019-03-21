@@ -39,6 +39,6 @@ Meteor.methods({
 
 		return ChatInfo.find(
 			{storyId: storyId, time: {$gt: date}},
-			{sort: {time: -1}, fields: {message: 1, time: 1}}).fetch();
+			{sort: {time: -1}, fields: {_id: 1, message: 1, time: 1}}).fetch();
 	}
 });

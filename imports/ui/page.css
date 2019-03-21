@@ -21,3 +21,14 @@
 #barrageCanvas {
     height: 200px;
 }
+
+.barrage-comment {
+    position: fixed;
+    width: 2000px;
+    left: 0;
+    top: 0;
+    z-index: 2147483647;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
