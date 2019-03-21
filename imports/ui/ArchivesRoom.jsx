@@ -46,6 +46,7 @@ class ArchivesRoom extends Component {
 						<img className="ui avatar image" src="images/storyLogo2.jpg" alt="Story Image" />
 						<div className = "content">
 							<div className="header" key={m._id}>{m.title}</div>
+							{/*<Button variant = {"primary"} onClick={()=> this.}>Show Content</Button>*/}
 						</div>
 					</div>
 					<hr />
