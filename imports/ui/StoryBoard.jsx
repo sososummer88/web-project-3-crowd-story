@@ -13,7 +13,6 @@ class StoryBoard extends Component {
 		this.state = {
 			content: "",
 		};
-		this.renderTimes = 0;
 	}
 
 	renderStoryContent() {

@@ -26,7 +26,7 @@ class Hall extends Component {
 	renderUncompletedStoryList() {
 		return this.props.uncompletedStories.map((value) => {
 			return (
-				<Card key={value._id}>
+				<Card className={"story-card"} key={value._id}>
 					<Card.Header>
 						<Card.Title>{value.title}</Card.Title>
 					</Card.Header>
@@ -122,10 +122,6 @@ class Hall extends Component {
 			return (
 				<div>
 					<NavigationBar/>
-					<h2>Welcome to Crowd Story!</h2>
-					<h3>Please Sign in First!</h3>
-					<AccountLogin/>
-
 					<Row>
 						<Col lg={"10"}> </Col>
 						<Col lg={"2"}>

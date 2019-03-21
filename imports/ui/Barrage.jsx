@@ -44,6 +44,7 @@ export default class Barrage extends Component {
 			left: -1000,
 		}, {
 			duration: 9000,
+			easing: "linear",
 			complete: function() {
 				domElement.remove();
 			}

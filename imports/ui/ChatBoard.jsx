@@ -21,16 +21,20 @@ class ChatBoard extends Component {
 
 	handleKeyPress(event) {
 		if (event.key === "Enter") {
-			Meteor.call("chatInfo.insert", this.props.storyId, this.state.message, (error, result) => {
-				if (error !== undefined && error !== null) {
-					// show some tips
-				} else {
-					this.setState({
-						message: "",
-					});
-				}
-			});
+			this.submit();
 		}
+	}
+
+	submit() {
+		Meteor.call("chatInfo.insert", this.props.storyId, this.state.message, (error, result) => {
+			if (error !== undefined && error !== null) {
+				// show some tips
+			} else {
+				this.setState({
+					message: "",
+				});
+			}
+		});
 	}
 
 	renderChatInfo() {
@@ -58,7 +62,7 @@ class ChatBoard extends Component {
 						onKeyPress={(e) => {this.handleKeyPress(e);}}
 					/>
 					<InputGroup.Append>
-						<Button variant="success">Submit</Button>
+						<Button variant="success" onClick={() => this.submit()}>Submit</Button>
 					</InputGroup.Append>
 				</InputGroup>
 			</Col>

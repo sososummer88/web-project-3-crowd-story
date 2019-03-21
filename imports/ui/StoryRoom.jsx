@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import { StoryMeta } from "../api/story-meta";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import StoryBoard from "./StoryBoard";
 import ChatBoard from "./ChatBoard";
@@ -65,19 +65,20 @@ class StoryRoom extends Component {
 							>
 								<Modal.Header closeButton>
 									<Modal.Title id="contained-modal-title-vcenter">
-										Modal heading
+										Congratulations!
 									</Modal.Title>
 								</Modal.Header>
 								<Modal.Body>
-									<h4>Centered Modal</h4>
 									<p>
-										Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-										dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-										ac consectetur ac, vestibulum at eros.
+										You and your friends have finished this story.
+									</p>
+									<p>
+										This page will jump to archives room in 4 seconds. If auto jump does not work,
+										you can click the button below to jump to archives room.
 									</p>
 								</Modal.Body>
 								<Modal.Footer>
-									<Button onClick={() => {}}>Jump to archives room</Button>
+									<Link to={"/archives-room"}><Button>Jump to archives room</Button></Link>
 								</Modal.Footer>
 							</Modal>
 							<FooterPage />

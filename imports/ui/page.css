@@ -32,3 +32,12 @@
     font-size: 25px;
     font-weight: bold;
 }
+
+.story-card {
+    transition: transform 0.2s, z-index 0.1ms;
+}
+
+.story-card:hover {
+    transform: scale(1.3);
+    z-index: 999;
+}

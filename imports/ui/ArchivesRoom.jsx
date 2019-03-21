@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
-import AccountLogin from "./AccountLogin.jsx";
 import NavigationBar from "./NavigationBar";
 import { Button } from "react-bootstrap";
 import { StoryMeta } from "../api/story-meta";
@@ -81,9 +80,6 @@ class ArchivesRoom extends Component {
 		return (
 			<div>
 				<NavigationBar />
-				<h2>Welcome to Crowd Story!</h2>
-				<h3>Please Sign in First!</h3>
-				<h4><AccountLogin /></h4>
 				<h2>Ranking</h2>
 				<div className="ranking">{this.renderRanking()}</div>
 				<FooterPage />
