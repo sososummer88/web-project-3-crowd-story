@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 
 export const Corpus = new Mongo.Collection("corpus");
 
+// In order to build the connected database of table corpus
 if (Meteor.isServer) {
 	Meteor.publish("corpus", function() {
 		return Corpus.find({}, {sort: {time: 1}});

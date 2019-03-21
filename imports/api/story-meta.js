@@ -53,6 +53,8 @@ Meteor.methods({
 			});
 		}
 	},
+
+	// function to getMeta for users to find content of archived stories
 	"story.getMeta"(id) {
 		check(id, String);
 		if (!Meteor.userId()) {
@@ -60,6 +62,8 @@ Meteor.methods({
 		}
 		return StoryMeta.find({_id: id}).fetch();
 	},
+
+	// In order to be able to upvote and downvote for archived stories
 	"vote.upLikes"(_id){
 		if (! Meteor.userId()) {
 			throw new Meteor.Error("not-authorized");

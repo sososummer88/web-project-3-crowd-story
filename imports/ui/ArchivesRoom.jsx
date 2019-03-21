@@ -31,6 +31,7 @@ class ArchivesRoom extends Component {
 		});
 	}
 
+	// In order to be able to get archived story content (in the ranking page)
 	collectStory(id) {
 		Meteor.call("story.getMeta", id, (error, result) => {
 			if (result !== null && result.length > 0) {
@@ -48,6 +49,7 @@ class ArchivesRoom extends Component {
 		});
 	}
 
+	// In the ranking page, add the button for users to upvote and downvote archived stories
 	renderRanking() {
 		return this.props.ranking.map(m => {
 			return (

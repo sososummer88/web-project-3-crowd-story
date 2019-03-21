@@ -4,6 +4,7 @@ import { check } from "meteor/check";
 
 export const ChatInfo = new Mongo.Collection("chat_info");
 
+// In order to build connected database Chat_info
 if (Meteor.isServer) {
 	Meteor.publish("chatInfo", function getChatInfo(storyId, enterTime) {
 		const time = new Date(enterTime);
@@ -13,6 +14,8 @@ if (Meteor.isServer) {
 	});
 }
 
+
+// function to insert chat content into the chat_info table
 Meteor.methods({
 	"chatInfo.insert"(storyId, message) {
 		check(storyId, String);
@@ -29,6 +32,8 @@ Meteor.methods({
 			time: new Date(),
 		});
 	},
+
+	// function to return the latest chat content
 	"chatInfo.getLatestChats"(storyId, date) {
 		check(storyId, String);
 		check(date, Date);

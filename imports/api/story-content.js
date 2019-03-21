@@ -4,6 +4,7 @@ import { check } from "meteor/check";
 
 import { StoryMeta } from "./story-meta";
 
+// build the connected database of story-content
 export const StoryContent = new Mongo.Collection("story_content");
 
 if (Meteor.isServer) {
@@ -14,6 +15,7 @@ if (Meteor.isServer) {
 	});
 }
 
+//method to insert data into story-content table
 Meteor.methods({
 	"storyContent.insert"(content, storyId, endSentence) {
 		check(content, String);
