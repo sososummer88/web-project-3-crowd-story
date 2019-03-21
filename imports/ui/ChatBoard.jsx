@@ -26,7 +26,7 @@ class ChatBoard extends Component {
 	}
 
 	submit() {
-		Meteor.call("chatInfo.insert", this.props.storyId, this.state.message, (error, result) => {
+		Meteor.call("chatInfo.insert", this.props.storyId, this.state.message, (error) => {
 			if (error !== undefined && error !== null) {
 				// show some tips
 			} else {
@@ -50,6 +50,7 @@ class ChatBoard extends Component {
 	render() {
 		return (
 			<Col lg={"3"}>
+				<h2 className={"board-title"}>Chat Room</h2>
 				<div className={"chat-board"}>
 					{this.renderChatInfo()}
 				</div>

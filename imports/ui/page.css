@@ -33,6 +33,10 @@
     font-weight: bold;
 }
 
+.comment-avatars {
+    border-radius: 10%;
+}
+
 .story-card {
     transition: transform 0.2s, z-index 0.1ms, color 0.2s;
 }
@@ -56,4 +60,8 @@
 
 .select-button:hover {
     font-weight: bold;
+}
+
+.board-title {
+    color: black;
 }

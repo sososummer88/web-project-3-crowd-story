@@ -31,11 +31,11 @@ export default class Barrage extends Component {
 	}
 
 	drawComment(chatInfo) {
-		const element = "<div id='" + chatInfo._id + "' class='barrage-comment'>" + chatInfo.message + "</div>";
+		const imgUrl = "https://api.adorable.io/avatars/25/" + chatInfo.username + ".png";
+		const element = "<div id='" + chatInfo._id + "' class='barrage-comment'><img class='comment-avatars' src='" + imgUrl + "'/>: " + chatInfo.message + "</div>";
 		$("#barrageDiv").append(element);
 		const domElement = $("#" + chatInfo._id);
 		const top = Math.floor(Math.random() * (this.commentHeight)) + 100;
-		console.log(top);
 		domElement.css({
 			left: this.windowWidth,
 			top: top,

@@ -52,6 +52,7 @@ class StoryBoard extends Component {
 	render() {
 		return (
 			<Col lg={"9"}>
+				<h2 className={"board-title"}>{this.props.storyMeta.title}</h2>
 				<div className={"story-board"}>
 					<Alert variant={"info"}>
 						{this.props.storyMeta.start_sentence}
