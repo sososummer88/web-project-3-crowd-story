@@ -35,6 +35,7 @@ export default class Barrage extends Component {
 		$("#barrageDiv").append(element);
 		const domElement = $("#" + chatInfo._id);
 		const top = Math.floor(Math.random() * (this.commentHeight)) + 100;
+		console.log(top);
 		domElement.css({
 			left: this.windowWidth,
 			top: top,
@@ -42,7 +43,7 @@ export default class Barrage extends Component {
 		domElement.animate({
 			left: -1000,
 		}, {
-			duration: 8000,
+			duration: 9000,
 			complete: function() {
 				domElement.remove();
 			}
