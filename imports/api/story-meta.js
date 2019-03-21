@@ -53,6 +53,13 @@ Meteor.methods({
 			});
 		}
 	},
+	"story.getMeta"(id) {
+		check(id, String);
+		if (!Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
+		return StoryMeta.find({_id: id}).fetch();
+	},
 	"vote.upLikes"(_id){
 		if (! Meteor.userId()) {
 			throw new Meteor.Error("not-authorized");

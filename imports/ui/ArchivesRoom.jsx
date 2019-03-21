@@ -32,6 +32,23 @@ class ArchivesRoom extends Component {
 		});
 	}
 
+	collectStory(id) {
+		Meteor.call("story.getMeta", id, (error, result) => {
+			if (result !== null && result.length > 0) {
+				const meta = result[0];
+				Meteor.call("storyContent.get", id, (error, result) => {
+					if (result !== null && result.length > 0) {
+						let story = meta.start_sentence;
+						for (let i = 0; i < result.length; i++) {
+							story += result[i].content;
+						}
+						console.log(story);
+					}
+				});
+			}
+		});
+	}
+
 	renderRanking() {
 		return this.props.ranking.map(m => {
 			return (
@@ -46,7 +63,7 @@ class ArchivesRoom extends Component {
 						<img className="ui avatar image" src="images/storyLogo2.jpg" alt="Story Image" />
 						<div className = "content">
 							<div className="header" key={m._id}>{m.title}</div>
-							{/*<Button variant = {"primary"} onClick={()=> this.}>Show Content</Button>*/}
+							<Button variant = {"primary"} onClick={()=> this.collectStory(m._id)}>Show Content</Button>
 						</div>
 					</div>
 					<hr />

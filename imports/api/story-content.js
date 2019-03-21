@@ -45,4 +45,11 @@ Meteor.methods({
 	"storyContent.delete"(id) {
 		StoryContent.remove({_id: id});
 	},
+	"storyContent.get"(id) {
+		check(id, String);
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
+		return StoryContent.find({storyId: id}, {sort: {time: 1}}).fetch();
+	}
 });
