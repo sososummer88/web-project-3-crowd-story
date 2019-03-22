@@ -5,7 +5,7 @@ This is project 3 for Web Development course (CS5610) in Northeastern University
 This project is made by Yibo Zhao and Fang Hong.
 
 # Demo
-You can visit our website here.
+You can visit our website here: https://happy-crowd-story.herokuapp.com
 
 # Feature
 For users:
