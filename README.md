@@ -21,6 +21,7 @@ For administrator:
    
 # Design of MongoDB
 Collection Name: Story
+
 | column | data type | meaning |
 |-------|-----|------|
 | _id | string | identification of a story |
@@ -34,6 +35,7 @@ Collection Name: Story
 | downvote | number | number of downvote of this story |
 
 Collection Name: story_content
+
 | column | data type | meaning |
 |-------|-----|------|
 | _id | ObjectId | id created by MongoID |
