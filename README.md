@@ -79,4 +79,9 @@ During the development, we utilized following technologies
   
 # Screenshots
 
+# Link to the Video Demonstration
+
+# License
+This repository is under MIT license.
+
 
