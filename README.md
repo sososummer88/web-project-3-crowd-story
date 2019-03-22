@@ -81,6 +81,10 @@ During the development, we utilized following technologies
 
 # Link to the Video Demonstration
 
+# Reference to the class with link:
+For more information about the class, please go to this page:
+http://johnguerra.co/classes/webDevelopment_spring_2019/
+
 # License
 This repository is under MIT license.
 
