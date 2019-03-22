@@ -44,3 +44,27 @@ Collection Name: story_content
 | time | date | create time of this comment |
 | content | string | content of a story |
    
+Collection Name: users
+
+| column | data type | meaning |
+|-------|-----|------|
+| _id | ObjectId | id created by Mongodb |
+| username | string | registered username |
+
+Collection Name: chat_info
+
+| column | data type | meaning |
+|-------|-----|------|
+| _id | ObjectId | Id created by MongoDB |
+| storyId | string | storyId of a story |
+| username | string | username for the comments |
+| message | string | message from users |
+| time | date | created time of a message |
+
+Collection Name: corpus
+
+| column | data type | meaning |
+|-------|-----|------|
+| _id | ObjectId | Id created by MongoDB |
+| content | string | content of a story |
+| time | date | created time of a message |
