@@ -20,6 +20,7 @@ For administrator:
    * Add materials for creating new stories
    
 # Design of MongoDB
+Collection Name: Story
 | column | data type | meaning |
 |-------|-----|------|
 | _id | string | identification of a story |
@@ -32,5 +33,12 @@ For administrator:
 | upvote | number | number of upvote of this story |
 | downvote | number | number of downvote of this story |
 
-
+Collection Name: story_content
+| column | data type | meaning |
+|-------|-----|------|
+| _id | ObjectId | id created by MongoID |
+| storyId | string | storyID of a story |
+| author | string | author of the current comment |
+| time | date | create time of this comment |
+| content | string | content of a story |
    
