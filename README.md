@@ -68,3 +68,10 @@ Collection Name: corpus
 | _id | ObjectId | Id created by MongoDB |
 | content | string | content of a story |
 | time | date | created time of a message |
+
+# Technology
+During the development, we utilized following technologies
+  * Meteor
+  * React
+  * MongoDB
+  
