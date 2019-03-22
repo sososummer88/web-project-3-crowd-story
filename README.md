@@ -20,17 +20,17 @@ For administrator:
    * Add materials for creating new stories
    
 # Design of MongoDB
-| 字段名 | 类型 | 说明 |
+| column | data type | meaning |
 |-------|-----|------|
-| _id | string | 故事的id，每个故事的唯一标识 |
-| title | string | 故事的标题 |
-| start_time | date | 故事的创建时间 |
-| end_time | date | 故事的结束时间 |
-| start_sentence | string | 故事的第一句话 |
-| end_sentence | string | 故事的最后一句话 |
-| finished | boolean | 标记当前故事是否结束。true已经结束，false尚未结束 |
-| upvote | number | 支持这个故事的票数 |
-| downvote | number | 反对这个故事的票数 |
+| _id | string | identification of a story |
+| title | string | title of a story |
+| start_time | date | start time of a story |
+| end_time | date | end time of a story |
+| start_sentence | string | First sentence of a story |
+| end_sentence | string | Last sentence of a story |
+| finished | boolean | mark if the story has finished or not |
+| upvote | number | number of upvote of this story |
+| downvote | number | number of downvote of this story |
 
 
    
