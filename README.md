@@ -77,3 +77,6 @@ During the development, we utilized following technologies
   * React
   * MongoDB
   
+# Screenshots
+
+
