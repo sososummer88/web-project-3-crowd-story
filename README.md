@@ -4,10 +4,10 @@ This is project 3 for Web Development course (CS5610) in Northeastern University
 
 This project is made by Yibo Zhao and Fang Hong.
 
-# Demo
-You can visit our website here: https://happy-crowd-story.herokuapp.com
+## Demo
+You can visit our website [here](https://happy-crowd-story.herokuapp.com).
 
-# Feature
+## Feature
 For users:
    * Register and login
    * Create new stories
@@ -21,7 +21,7 @@ For users:
 For administrator:
    * Add materials for creating new stories
    
-# Design of MongoDB
+## Design of MongoDB
 Collection Name: Story
 
 | column | data type | meaning |
@@ -71,21 +71,27 @@ Collection Name: corpus
 | content | string | content of a story |
 | time | date | created time of a message |
 
-# Technology
+## Technology
 During the development, we utilized following technologies
   * Meteor
   * React
   * MongoDB
+  * JQuery
   
-# Screenshots
+## Screenshots
+### Homepage
+![](screenshots/homepage.png)
+### Story Room
+![](screenshots/story-room.png)
+### Archives Room
+![](screenshots/archives-room.png)
 
-# Link to the Video Demonstration
+## Link to the [Video Demonstration](https://www.youtube.com/watch?v=q5r4chooqbI&t=20s)
+https://www.youtube.com/watch?v=q5r4chooqbI&t=20s
 
-# Reference to the class with link:
+## Reference to the class with link:
 For more information about the class, please go to this page:
 http://johnguerra.co/classes/webDevelopment_spring_2019/
 
-# License
+## License
 This repository is under MIT license.
-
-
