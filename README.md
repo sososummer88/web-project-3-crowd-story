@@ -8,5 +8,17 @@ You can visit our website here.
 # Feature
 For users:
    * Register and login
-   *
+   * Create new stories
+   * Add materials to an existing stories before it finished
+   * Upvote and downvote archived stories
+   * Chat with other users while writing the stories.
+   * Comments barrage
+   * Rank archived story according to upvote
+   * Visite all archived story & Upvote/Downvote archived story
+For administrator:
+   * Add materials for creating new stories
+   
+# Project Structure
+
+
    
