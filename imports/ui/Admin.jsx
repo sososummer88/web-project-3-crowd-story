@@ -30,7 +30,7 @@ class Admin extends Component {
 
 	submit() {
 		// TODO: add function of validation
-		Meteor.call("corpus.add", this.state.newSentence, (error, result) => {
+		Meteor.call("corpus.add", this.state.newSentence, (error) => {
 			if (error !== undefined && error !== null) {
 				// show some tips
 			} else {

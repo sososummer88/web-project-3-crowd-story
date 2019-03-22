@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 import { StoryMeta } from "../api/story-meta";
 import FooterPage from "./Footer.jsx";
 import {Redirect} from "react-router-dom";
+import $ from "jquery";
 
 class ArchivesRoom extends Component {
 	constructor(props) {
@@ -33,20 +34,29 @@ class ArchivesRoom extends Component {
 
 	// In order to be able to get archived story content (in the ranking page)
 	collectStory(id) {
-		Meteor.call("story.getMeta", id, (error, result) => {
-			if (result !== null && result.length > 0) {
-				const meta = result[0];
-				Meteor.call("storyContent.get", id, (error, result) => {
-					if (result !== null && result.length > 0) {
-						let story = meta.start_sentence;
-						for (let i = 0; i < result.length; i++) {
-							story += result[i].content;
+		const element = $("#" + id + "-story");
+		if (element.attr("loaded") === "false") {
+			Meteor.call("story.getMeta", id, (error, result) => {
+				if (result !== null && result.length > 0) {
+					const meta = result[0];
+					Meteor.call("storyContent.get", id, (error, result) => {
+						if (result !== null && result.length > 0) {
+							let story = meta.start_sentence + " ";
+							for (let i = 0; i < result.length; i++) {
+								let value = result[i].content.trim();
+								if (!value.endsWith(".") && !value.endsWith("?") && !value.endsWith("!")) {
+									value += ".";
+								}
+								value += " ";
+								story += value;
+							}
+							element.append("<p>" + story + "</p>");
+							element.attr("loaded", "true");
 						}
-						console.log(story);
-					}
-				});
-			}
-		});
+					});
+				}
+			});
+		}
 	}
 
 	// In the ranking page, add the button for users to upvote and downvote archived stories
@@ -63,10 +73,11 @@ class ArchivesRoom extends Component {
 						</div>
 						<img className="ui avatar image" src="images/storyLogo2.jpg" alt="Story Image" />
 						<div className = "content">
-							<div className="header" key={m._id}>{m.title}</div>
+							<div className="archives-room-title" key={m._id}>{m.title}</div>
 							<Button variant = {"primary"} onClick={()=> this.collectStory(m._id)}>Show Content</Button>
 						</div>
 					</div>
+					<div className={"archives-room-story"} id={m._id + "-story"} loaded={"false"}></div>
 					<hr />
 				</div>
 			);
@@ -82,7 +93,7 @@ class ArchivesRoom extends Component {
 		return (
 			<div>
 				<NavigationBar />
-				<h2>Ranking</h2>
+				<h2>Archives Room</h2>
 				<div className="ranking">{this.renderRanking()}</div>
 				<FooterPage />
 			</div>
