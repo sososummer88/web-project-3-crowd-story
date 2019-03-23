@@ -4,6 +4,13 @@ import PropTypes from "prop-types";
 import $ from "jquery";
 import "./page.css";
 
+
+// CodeReview <Yan>: First of all, great work and a good learning example to follow with.
+// It has many features and I like the way you did the barrage.
+// Just a liitle advice for your considerations.
+// If there are some more comments and well organizing the css and image/images folders, it will be more readable.
+// Hope this can help. Good luck!
+
 export default class Barrage extends Component {
 	constructor(props) {
 		super(props);
